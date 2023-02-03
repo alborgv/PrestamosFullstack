@@ -1,0 +1,47 @@
+{% extends 'Inv/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar cliente</title>
+</head>
+<body>
+    
+<br>
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card card-body">
+
+            <p>¿Estás seguro de querer borrar al cliente <b>{{customer}}</b>?</p>
+
+            <div class="card card-body">
+                <h6>Detalles del cliente</h6>
+                <hr>
+                <span style="white-space: pre-line"><b>Nombre:</b> {{customer.name}}
+                    <b>Email:</b> {{customer.email}}
+                    <b>Teléfono:</b> {{customer.number}}
+                    <b>Cliente creado:</b> {{customer.date_created}}
+                </span>
+            </div>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+                
+                <a href="{% url 'Customer' customer.id %}" class="btn btn-warning">Cancelar</a>
+
+                <input type="submit" class="btn btn-danger" name="Confirm" value="Confimar">
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+{% endblock %}

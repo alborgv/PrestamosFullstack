@@ -1,0 +1,96 @@
+{% extends 'Inv/base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente: {{ customer }}</title>
+</head>
+
+<body>
+
+    <br>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="card card-body">
+                <h5>Herramientas</h5>
+                <hr>
+                <a href="{% url 'Edit_customer' customer.id %}" class="btn btn-outline-info btn-sm btn-block">Editar cliente</a>
+                <a href="{% url 'Delete_customer' customer.id %}" class="btn btn-outline-danger btn-sm btn-block">Eliminar cliente</a>
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Información del Cliente</h5>
+                <hr>
+                <p><b>Nombre:</b> {{customer.name}}</p>
+                <p><b>Email:</b> {{customer.email}}</p>
+                <p><b>Teléfono:</b> {{customer.number}}</p>
+                <p><b>Cliente creado:</b> {{customer.date_created}}</p>
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Prestaciones Totales</h5>
+                <hr>
+                <h1 style="text-align: center; padding: 10px">{{ all_payments }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <div class=" row">
+        <div class="col-md">
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <h5>Pagos totales</h5>
+                    <hr>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Prestado</th>
+                        <th>Crédito</th>
+                        <th>Total a pagar</th>
+                        <th>Pagado</th>
+                        <th>Estado</th>
+                        <th>Herramientas</th>
+                    </tr>
+
+                    {% for payment in payments %}
+                    <tr>
+                        <td>{{ payment.date_created }}</td>
+                        <td>{{ payment.lened }}</td>
+                        <td>{{ payment.credit }}</td>
+                        <td>{{ payment.lened|add:payment.credit }}</td>
+                        <td>{{ payment.paid }}</td>
+                        <td>{{ payment.status }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning"
+                                href="{% url 'Customer' customer.id %}"><i
+                                    class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-sm btn-info"
+                                href="{% url 'Edit_customer' customer.id %}"><i
+                                    class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="btn btn-sm btn-danger" href=""><i
+                                    class="fa-sharp fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+</div>
+
+
+</body>
+
+</html>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'Inv/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar al pago</title>
+</head>
+
+<body>
+
+    <br>
+    <div class="col-md-7 mx-auto d-flex align-items-center justify-content-center">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="card card-body">
+                <form class="border border-primary" action="/" method="POST">
+                    <h5>Total a pagar</h5>
+                    <hr>
+                    <input class="form-control" id="pay" name="pay" type="text" required>
+                    <br>
+                    <div class="d-grid gap-10">
+                        <input class="btn btn-primary" name="Submit" type="submit" value="Listo">
+                    </div>
+                </form>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}
