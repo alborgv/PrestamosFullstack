@@ -6,6 +6,15 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def dashboard(request):
+    pns = Payment.objects.all().filter(status=None)
+
+    for p in pns:
+        if int(p.lened) + int(p.credit) > int(p.paid):
+            p.status = 'No pagado'
+        else:
+            p.status = 'Pagado'
+        p.save()
+
     payments = Payment.objects.all().filter(status='No pagado')
 
     context = {
@@ -126,6 +135,12 @@ def createPayment(request):
     if request.method == "POST":
         form = PaymentForm(request.POST)
         if form.is_valid():
+            paid = int(form.cleaned_data['paid'])
+            total_to_pay = int(form.cleaned_data['lened']) + int(form.cleaned_data['credit'])
+
+            
+            
+            print(form.cleaned_data['paid'])
             form.save()
             return redirect('/')
     
