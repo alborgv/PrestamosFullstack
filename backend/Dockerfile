@@ -11,4 +11,4 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8000
 
 # Comando para ejecutar la aplicación con Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "myproject.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "main.wsgi:application"]
