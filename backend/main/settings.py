@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-htlanuw5@()@^u1tf4um23u2kvvu3sc56fyv-6o*ax6en43ojx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "prestaciones-fullstack.vercel.app"]
 
