@@ -1,17 +1,3 @@
-# Usa una imagen base que contenga Python
-FROM python:3.12
-
-# Establece el directorio de trabajo
-WORKDIR /app
-
-# Copia el archivo de requisitos y la aplicación
-COPY requirements.txt /app/
-
-# Instala las dependencias del sistema necesarias
-RUN apt-get update && apt-get install -y \
-    libmysqlclient-dev \
-    && rm -rf /var/lib/apt/lists/*
-
 # Instala las dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
 
