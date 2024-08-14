@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "prestaciones-fullstack.vercel.app"]
+ALLOWED_HOSTS = ["localhost", "prestaciones-fullstack.vercel.app", "prestamos-backend-ruby.vercel.app"]
 
 
 # Application definition
