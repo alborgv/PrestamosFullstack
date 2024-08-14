@@ -1,8 +1,11 @@
 #!/bin/bash
 
-# Realiza tareas de construcción o preparación aquí
-echo "Ejecutando el script de construcción..."
+echo "Iniciando build.sh..."
 
-# Ejemplo: instalar dependencias, ejecutar comandos, etc.
+# Instalar dependencias
 pip install -r requirements.txt
+
+# Recolectar archivos estáticos
 python manage.py collectstatic --noinput
+
+echo "build.sh completado."
