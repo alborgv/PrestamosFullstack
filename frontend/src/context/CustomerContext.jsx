@@ -16,7 +16,7 @@ export const CustomerProvider = ({ children }) => {
 
     const Customer = async (nitProvider) => {
 
-        const response = await fetch(`${process.env.URL_BACKEND}/api/v1/customer/?nit_provider=${nitProvider}`)
+        const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/customer/?nit_provider=${nitProvider}`)
 
         const data = await response.json();
 
@@ -26,7 +26,7 @@ export const CustomerProvider = ({ children }) => {
 
     const createCustomer = async (nit, name, last_name, phone, email, nit_provider) => {
 
-        const response = await fetch(`${process.env.URL_BACKEND}/api/v1/create_customer/`, {
+        const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/create_customer/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -72,7 +72,7 @@ export const CustomerProvider = ({ children }) => {
 
     const updateCustomer = async (id, formData) => {
         try {
-            const response = await fetch(`${process.env.URL_BACKEND}/api/v1/customer/${id}/update/`, {
+            const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/customer/${id}/update/`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -123,7 +123,7 @@ export const CustomerProvider = ({ children }) => {
 
     const deleteCustomer = async (id) => {
         try {
-            const response = await fetch(`${process.env.URL_BACKEND}/api/v1/customer/${id}/delete/`, {
+            const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/customer/${id}/delete/`, {
                 method: "DELETE",
             })
             
@@ -166,7 +166,7 @@ export const CustomerProvider = ({ children }) => {
 
     const Financial = async (nitProvider) => {
 
-        const response = await fetch(`${process.env.URL_BACKEND}/api/v1/financials/?nit_provider=${nitProvider}`)
+        const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/financials/?nit_provider=${nitProvider}`)
 
         const data = await response.json();
 
@@ -177,7 +177,7 @@ export const CustomerProvider = ({ children }) => {
 
     const createFinancial = async (customer, borrowed, credit, fee, nit_provider) => {
         
-        const response = await fetch(`${process.env.URL_BACKEND}/api/v1/create_financial/`, {
+        const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/create_financial/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -223,7 +223,7 @@ export const CustomerProvider = ({ children }) => {
     
     const deleteFinancial = async (id) => {
         try {
-            const response = await fetch(`${process.env.URL_BACKEND}/api/v1/financials/${id}/delete/`, {
+            const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/financials/${id}/delete/`, {
                 method: "DELETE",
             })
             
@@ -266,7 +266,7 @@ export const CustomerProvider = ({ children }) => {
 
     const createFee = async (financial_id, paid, date) => {
         console.log("test")
-        const response = await fetch(`${process.env.URL_BACKEND}/api/v1/create_fee/`, {
+        const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/create_fee/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
