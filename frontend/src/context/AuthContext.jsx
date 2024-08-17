@@ -211,7 +211,8 @@ export const AuthProvider = ({ children }) => {
         if (authTokens) {
             setUser(jwtDecode(authTokens.access))
         }
-    }, [authTokens, loading])
+        setLoading(false);
+    }, [authTokens])
 
     return (
         <AuthContext.Provider value={contextData}>
