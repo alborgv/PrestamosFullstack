@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
 
     const loginUser = async (nit, password, onError) => {
-        const response = await fetch("http://127.0.0.1:8000/api/v1/token/", {
+        const response = await fetch(`${process.env.URL_BACKEND}/api/v1/token/`, {
             method: "POST",
             headers:{
                 "Content-Type":"application/json"
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const registerUser = async (nit, name, last_name, password, password2) => {
-        const response = await fetch("http://127.0.0.1:8000/api/v1/register/", {
+        const response = await fetch(`${process.env.URL_BACKEND}/api/v1/register/`, {
             method: "POST",
             headers: {
                 "Content-Type":"application/json"
@@ -119,7 +119,7 @@ export const AuthProvider = ({ children }) => {
     const logoutUser = async () => {
         
         
-        const response = await fetch("http://localhost:8000/api/v1/token/refresh/", {
+        const response = await fetch(`${process.env.URL_BACKEND}/api/v1/token/refresh/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -141,7 +141,7 @@ export const AuthProvider = ({ children }) => {
         
         try {
         
-            const response = await fetch("http://localhost:8000/api/v1/change_password/", {
+            const response = await fetch(`${process.env.URL_BACKEND}/api/v1/change_password`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
