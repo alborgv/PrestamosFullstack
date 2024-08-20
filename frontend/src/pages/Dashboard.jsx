@@ -174,7 +174,7 @@ export default function Dashboard() {
                         <BarChart
                             className='shadow-xl border-red-500'
                             width={700}
-                            height={400}
+                            height={350}
                             series={[
                                 { name: 'Monto', data: feeMeses.map(item => item.amount) }
                             ]}
