@@ -35,8 +35,11 @@ export const AuthProvider = ({ children }) => {
 
     const navigate = useNavigate();
 
+    const urlBackend = import.meta.env.VITE_URL_BACKEND;
+
     const loginUser = async (nit, password, onError) => {
-        const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/token/`, {
+
+        const response = await fetch(`${urlBackend}/api/v1/token/`, {
             method: "POST",
             headers:{
                 "Content-Type":"application/json"
@@ -73,7 +76,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const registerUser = async (nit, name, last_name, password, password2) => {
-        const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/register/`, {
+        const response = await fetch(`${urlBackend}/api/v1/register/`, {
             method: "POST",
             headers: {
                 "Content-Type":"application/json"
@@ -119,7 +122,7 @@ export const AuthProvider = ({ children }) => {
     const logoutUser = async () => {
         
         
-        const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/token/refresh/`, {
+        const response = await fetch(`${urlBackend}/api/v1/token/refresh/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -141,7 +144,7 @@ export const AuthProvider = ({ children }) => {
         
         try {
         
-            const response = await fetch(`https://prestamos-backend-ruby.vercel.app/api/v1/change_password`, {
+            const response = await fetch(`${urlBackend}/api/v1/change_password`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

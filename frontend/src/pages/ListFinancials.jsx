@@ -239,7 +239,7 @@ function ListFinancialsPage() {
 
 
             <div className="container mx-auto px-4 py-8">
-                <h1 className="flex items-center justify-center text-4xl font-bold mb-6 font-anton"> LISTA DE PRESTACIONES</h1>
+                <h1 className="flex items-center justify-center text-4xl font-bold mb-6 font-anton dark:text-white"> LISTA DE PRESTACIONES</h1>
 
                 <div className="flex items-center mb-4">
 
@@ -249,7 +249,7 @@ function ListFinancialsPage() {
                             type="text" 
                             onChange={handleFilter} 
                             placeholder="Buscar..." 
-                            className="w-full px-4 py-2 pr-10 rounded-md border border-gray-300 focus:outline-none"
+                            className="w-full px-4 py-2 pr-10 rounded-md border border-gray-300 dark:bg-secColor dark:border-blue-950 dark:text-white focus:outline-none"
                         />
                         
                         <div 
@@ -282,7 +282,7 @@ function ListFinancialsPage() {
 
                     
                         <div key={index} className="relative group" onClick={() => modalInfoFinancial(financial.id)}>
-                                <div className="max-w-lg overflow-hidden shadow-xl p-6 bg-white rounded-2xl transition transform hover:scale-105 duration-450">
+                                <div className="max-w-lg overflow-hidden shadow-xl p-6 bg-white dark:bg-pryColor dark:text-white rounded-2xl transition transform hover:scale-105 duration-450">
                                     <div className="flex items-center">
                                         <Avatar
                                         name={`${financial.customer_name} ${financial.customer_last_name}`}
@@ -294,9 +294,9 @@ function ListFinancialsPage() {
                                             <div className="font-bold text-xl mb-2">
                                                 {financial.customer_name} {financial.customer_last_name}
                                             </div>
-                                            <p className="text-gray-700 text-base">NIT: {financial.customer_nit}</p>
-                                            <p className="text-gray-700 text-base">Debe: {formatCurrency(parseInt(financial.credit, 10) + parseInt(financial.borrowed, 10))}</p>
-                                            <p className="text-gray-700 text-base">Total Pagado: {formatCurrency(totalPaid)}</p>
+                                            <p className="text-gray-700 text-base dark:text-slate-200">NIT: {financial.customer_nit}</p>
+                                            <p className="text-gray-700 text-base dark:text-slate-200">Debe: {formatCurrency(parseInt(financial.credit, 10) + parseInt(financial.borrowed, 10))}</p>
+                                            <p className="text-gray-700 text-base dark:text-slate-200">Total Pagado: {formatCurrency(totalPaid)}</p>
                                             
                                         
                                         </div>

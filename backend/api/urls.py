@@ -17,5 +17,4 @@ urlpatterns = [
     path('create_financial/', CreateFinancialView.as_view(), name='create_financial'),
     path('financials/<int:pk>/delete/', DeleteFinancialView.as_view(), name='financial-delete'),
     path('create_fee/', CreateFeeView.as_view(), name='create_fee'),
-    path('dashboard/', dashboard)
 ]

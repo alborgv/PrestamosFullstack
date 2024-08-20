@@ -181,19 +181,3 @@ class CreateFeeView(generics.CreateAPIView):
             response.data = {'error': response.data}
         return super().finalize_response(request, response, *args, **kwargs)
 
-
-
-@api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
-def dashboard(request):
-    if request.method == "GET":
-        response = f"Hey {request.user}, you are seeing a GET response"
-        return Response({'response': response}, status=status.HTTP_200_OK)
-    
-    elif request.method == "POST":
-        print(str(request.POST))
-        text = request.POST.get("text")
-        response = f"Hey {request.user}, your text is: {text}"
-        return Response({'response': response}, status=status.HTTP_200_OK)
-    
-    return Response({}, status=status.HTTP_400_BAD_REQUEST)

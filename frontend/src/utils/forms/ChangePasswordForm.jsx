@@ -28,7 +28,7 @@ const ChangePasswordForm = (errors) => {
         <div>
             {inputs.map((input) => (
                 <div className="mb-5" key={input.id}>
-                    <label htmlFor={input.id} className="block text-gray-700 font-medium text-xs mb-2 ml-2 text-left">
+                    <label htmlFor={input.id} className="block text-gray-700 dark:text-gray-100 font-medium text-xs mb-2 ml-2 text-left">
                         <span className="text-red-500">* </span>{input.label}: 
                     </label>
                     <input 

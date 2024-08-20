@@ -213,7 +213,7 @@ function ListCustomersPage() {
         <div>
             <Navbar />
             <div className="container mx-auto px-4 py-8">
-                <h1 className="flex items-center justify-center text-4xl font-bold mb-6 font-anton"> LISTA DE CLIENTES</h1>
+                <h1 className="flex items-center justify-center text-4xl font-bold mb-6 font-anton dark:text-white"> LISTA DE CLIENTES</h1>
                 <div className="flex items-center mb-4">
 
                     <div className="relative w-full max-w-xs">
@@ -222,7 +222,7 @@ function ListCustomersPage() {
                             type="text"
                             onChange={handleFilter}
                             placeholder="Buscar..."
-                            className="w-full px-4 py-2 pr-10 rounded-md border border-gray-300 focus:outline-none"
+                            className="w-full px-4 py-2 pr-10 rounded-md border border-gray-300 dark:bg-secColor dark:border-blue-950 dark:text-white focus:outline-none"
                         />
 
                         <div
@@ -251,7 +251,7 @@ function ListCustomersPage() {
                     {customers.map((customer, index) => (
 
                         <div key={index} className="relative group">
-                            <div className="max-w-lg overflow-hidden shadow-xl p-6 bg-white rounded-2xl transition transform hover:scale-105 duration-450">
+                            <div className="max-w-lg overflow-hidden shadow-xl p-6 bg-white dark:bg-pryColor dark:text-white rounded-2xl transition transform hover:scale-105 duration-450">
                                 <div className="flex items-center">
                                     <Avatar
                                         name={`${customer.name} ${customer.last_name}`}
@@ -263,9 +263,9 @@ function ListCustomersPage() {
                                         <div className="font-bold text-xl mb-2">
                                             {customer.name} {customer.last_name}
                                         </div>
-                                        <p className="text-gray-700 text-base">NIT: {customer.nit}</p>
-                                        <p className="text-gray-700 text-base">Correo: {customer.email}</p>
-                                        <p className="text-gray-700 text-base">Celular: {customer.phone}</p>
+                                        <p className="text-gray-700 dark:text-slate-200 text-base">NIT: {customer.nit}</p>
+                                        <p className="text-gray-700 dark:text-slate-200 text-base">Correo: {customer.email}</p>
+                                        <p className="text-gray-700 dark:text-slate-200 text-base">Celular: {customer.phone}</p>
                                     </div>
                                 </div>
 

@@ -1,8 +1,11 @@
 import logo from '../assets/image.png'
+import darkLogo from '../assets/darkIcon.png'
+
 import { Link } from 'react-router-dom'
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 
 import { FaUserLarge, FaAngleDown } from "react-icons/fa6";
+import { IoMdMoon, IoMdSunny } from "react-icons/io";
 
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
@@ -64,6 +67,34 @@ export default function Navbar() {
     } 
 
 
+    const [theme, setTheme] = useState(null);
+
+    useEffect(() => {
+
+        const savedTheme = localStorage.getItem('theme')
+
+        if (savedTheme) {
+            setTheme(savedTheme)
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    }, [])
+
+    useEffect(() => {
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    }, [theme]);
+
+    const handleThemeSwitch = () => {
+        const newTheme = theme === "dark" ? "light" : "dark"
+        setTheme(newTheme);
+        localStorage.setItem('theme', newTheme)
+    };
 
 
     return (
@@ -71,53 +102,53 @@ export default function Navbar() {
         <div>
 
 
-            <nav className="bg-gray-800 p-4">
+            <nav className="bg-white dark:bg-navColorDark p-4">
                 <div className="container mx-auto">
                     <div className="flex items-center justify-between">
                         <div>
                             <Link to="/" className="flex items-center cursor-pointer">
-                                <img src={logo} alt="Logo" className="h-8" />
-                                <h1 className="text-white ml-4">Prestaciones</h1>
+                                <img src={theme === 'dark' ? logo : darkLogo} alt="Logo" className="h-8" />
+                                <h1 className="dark:text-white ml-4">Prestaciones</h1>
                             </Link>
                         </div>
                         <div className="flex items-center">
-                            <Link to="/list-benefits" className="bg-transparent text-white px-4 py-2">
-                                Lista de prestaciones
+                            
+                            <Link to="/list-benefits" className="bg-transparent dark:text-white px-4 py-2">
+                                Préstamos
                             </Link>
-                            <Link to="/list-customers" className="bg-transparent text-white px-4 py-2">
-                                Lista de clientes
+                            <Link to="/list-customers" className="bg-transparent dark:text-white px-4 py-2">
+                                Clientes
                             </Link>
+                            <button onClick={handleThemeSwitch}>{theme === 'light' ? <IoMdMoon size={20}/> : <IoMdSunny size={20} className='text-white'/> }</button>
 
                             <Menu as="div" className="relative inline-block text-left">
                                 <div>
                                     <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 px-3 py-2">
-                                        <FaUserLarge color='white' /> <FaAngleDown color='white' />
+                                        <FaUserLarge color={theme === 'dark' ? 'white' : 'black'} /> <FaAngleDown color={theme === 'dark' ? 'white' : 'black'} />
                                     </Menu.Button>
                                 </div>
 
                                 <Transition
                                     as={Fragment}
-                                    enter="transition ease-out duration-100"
+                                    enter="transition ease-out duration-200"
                                     enterFrom="transform opacity-0 scale-95"
                                     enterTo="transform opacity-100 scale-100"
-                                    leave="transition ease-in duration-75"
+                                    leave="transition ease-in duration-150"
                                     leaveFrom="transform opacity-100 scale-100"
                                     leaveTo="transform opacity-0 scale-95"
                                 >
-                                    <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                    <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-xl dark:bg-darkMode dark:text-white">
                                         <div className="py-1">
-                                            <Menu.Item>
+                                            <Menu.Item className="cursor-pointer block px-4 py-2 text-sm hover:bg-gray-200 hover:text-black dark:hover:bg-secColor dark:hover:text-white">
                                                 <a
                                                     onClick={() => setShowModal(true)}
-                                                    className="cursor-pointer block px-4 py-2 text-sm hover:bg-gray-200 hover:text-black"
                                                 >
                                                     Cambiar contraseña
                                                 </a>
                                             </Menu.Item>
-                                            <Menu.Item>
+                                            <Menu.Item className="cursor-pointer block px-4 py-2 text-sm hover:bg-gray-200 hover:text-black dark:hover:bg-secColor dark:hover:text-white">
                                                 <a
                                                     onClick={handleLogout}
-                                                    className="cursor-pointer block px-4 py-2 text-sm hover:bg-gray-100 hover:text-black"
                                                 >
                                                     Cerrar sesión
                                                 </a>
@@ -135,7 +166,7 @@ export default function Navbar() {
                                     <form onChange={handleChange} onSubmit={handleSubmit}>
                                         <ChangePasswordForm errors={errors}/>
                                         <div className="flex items-center justify-between">
-                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded ml-auto" type="submit">
                                                 Cambiar contraseña
                                             </button>
                                             
@@ -153,10 +184,9 @@ export default function Navbar() {
                     </div>
                 </div>
 
-
-
             </nav>
 
+            <hr className='border-blue-900'/>
         </div>
 
     )

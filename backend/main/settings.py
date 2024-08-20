@@ -110,6 +110,15 @@ DATABASES = {
 }
 
 
+# DATABASES = {
+    
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -191,4 +200,4 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-CORS_ALLOWED_ORIGINS = ["https://prestaciones-frontend.vercel.app"]
+CORS_ALLOWED_ORIGINS = ["https://prestaciones-frontend.vercel.app", "http://localhost:5173"]
